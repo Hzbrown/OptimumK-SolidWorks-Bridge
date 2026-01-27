@@ -147,6 +147,9 @@ class carAssembly:
                 ("CHAS_LowFor", "UPRI_LowPnt"),
                 ("CHAS_LowAft", "UPRI_LowPnt"),
             ],
+            "Tierod": [
+                ("CHAS_TiePnt", "UPRI_TiePnt"),
+            ],
         }
 
         def get_pt(key: str):
