@@ -10,11 +10,11 @@ import cadquery as cq
 class carAssembly:
     def __init__(self, path: str):
         self.name = path
-        self.front_suspension, self.rear_suspension, self.setup = self.load_jsons(path)
+        self.front_suspension, self.rear_suspension, self.setup = self._load_jsons(path)
 
 
 
-    def load_jsons(self, path: str):
+    def _load_jsons(self, path: str):
         """Loads front and rear suspension JSON files from the given directory."""
         path = pathlib.Path(path)
         front_json_path = path / "Front_Suspension.json"
@@ -31,7 +31,7 @@ class carAssembly:
         return front_suspension, rear_suspension, setup
         
     
-    def draw_point(
+    def _draw_point(
         assy: cq.Assembly,
         name: str,
         xyz,
@@ -80,7 +80,7 @@ class carAssembly:
             color=cq.Color(0, 0, 1),
         )
 
-    def draw_suspension(suspension: dict, name: str) -> cq.Assembly:
+    def _draw_suspension(suspension: dict, name: str) -> cq.Assembly:
         """
         Draw all points from the JSON schema, rejecting any whose lists contain non-floats.
         """
@@ -99,7 +99,7 @@ class carAssembly:
             if isinstance(points, dict):
                 for pt_name, coords in points.items():
                     if is_float_list(coords):
-                        carAssembly.draw_point(
+                        carAssembly._draw_point(
                             assy,
                             f"{group}_{pt_name}",
                             coords,
@@ -107,14 +107,14 @@ class carAssembly:
                         )
 
 
-        carAssembly.draw_wheels(suspension.get("Wheels", {}), assy)
+        carAssembly._draw_wheels(suspension.get("Wheels", {}), assy)
 
 
         return assy
     
 
     @staticmethod
-    def draw_wheels(wheel: dict, assembly: cq.Assembly) -> cq.Assembly:
+    def _draw_wheels(wheel: dict, assembly: cq.Assembly) -> cq.Assembly:
         """
         Draws two hollow black cylinders for left and right wheels.
         Assumes wheel["Half Track"][side] is already centerline -> wheel center distance.
@@ -164,8 +164,8 @@ class carAssembly:
 
     def draw(self, setup: dict) -> cq.Assembly:
         """Draws the car assembly with front and rear suspensions, offsetting rear by reference distance."""
-        front_assy = carAssembly.draw_suspension(self.front_suspension, "Front Suspension")
-        rear_assy = carAssembly.draw_suspension(self.rear_suspension, "Rear Suspension")
+        front_assy = carAssembly._draw_suspension(self.front_suspension, "Front Suspension")
+        rear_assy = carAssembly._draw_suspension(self.rear_suspension, "Rear Suspension")
 
         # Read reference distance from setup
         ref_dist = setup.get("Reference distance", 0)
