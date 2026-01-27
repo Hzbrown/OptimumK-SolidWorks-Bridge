@@ -1,0 +1,12 @@
+# Conda environment file for OptimumK SolidWorks Bridge
+name: optimumk-bridge
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - openpyxl
+  - pip:
+      - cadquery
+      - OCP
+      - ocp-vscode

@@ -1,0 +1,58 @@
+[ 2023-09-06 21:07:10 ] Starting Genetic Algorithm
+
+	<< Configuration >> 
+
+           Number of threads: 10
+             Population size: 50
+  Selection for reproduction: Truncation, tournamentSize=3 selectionSize=10
+   Selection for replacement: Steady state, selectionSize=20
+                   Crossover: Voluminal, alpha=2
+                    Mutation: Gaussian, stddev=2
+        Mutation Rate (base): 0.05
+                  Boundaries: 
+	{
+		0 : {
+			CHAS_upper_aft_l :  CylindricalBoundary : p1=[         -0.076200000,          0.215900000,          0.131267000 ]; p2=[         -0.076200000,          0.215900000,          0.131267000 ]; radius=0.001000000
+			CHAS_upper_fore_l :  CylindricalBoundary : p1=[          0.107950000,          0.215900000,          0.131267000 ]; p2=[          0.107950000,          0.215900000,          0.131267000 ]; radius=0.001000000
+			TIE_l : BoxBoundary : lower=[          0.020000000,          0.212408000,          0.150000000 ]; upper=[          0.126200000,          0.212408000,          0.235000000 ]
+			UPRI_tie_l :  CylindricalBoundary : p1=[          0.075405513,          0.644079775,          0.185722012 ]; p2=[          0.075405513,          0.644079775,          0.185722012 ]; radius=0.020000000
+		}
+
+	}
+        Evaluation functions: 
+	{
+		Heave : {
+			front.tie_rod_angle_top_view_l | weight: 57.295779513
+			front.toe_angle_l | weight: 57.295779513
+			front.half_track_l | weight: 1000.000000000
+			front.roll_center.z | weight: 1000.000000000
+			front.side_view_swing_arm_angle_l | weight: 57.295779513
+		 }
+
+		Roll : {
+			front.roll_center.y | weight: 1000.000000000
+		 }
+
+		Steering : {
+			front.ackerman_angle | weight: 57.295779513
+			front.tie_rod_angle_front_view_l | weight: 57.295779513
+		 }
+	}
+	<< End configuration >> 
+
+
+[ 2023-09-06 21:07:10 ] Creating individual zero... Done.
+[ 2023-09-06 21:07:10 ] Evaluating individual zero...Done.
+[ 2023-09-06 21:07:10 ] Individual zero overall fitness: 92.442801969.
+[ 2023-09-06 21:07:10 ]   Generation |     Elapsed time |      Best individual |         Best fitness |      Average fitness |    Fitness std. dev. |   Selection pressure | 
+[ 2023-09-06 21:07:13 ]            0 |          0: 0: 2 |             2F2F4D78 |         83.679722554 |           1.4394e+02 |           4.0319e+01 |           5.8133e-01 | 
+[ 2023-09-06 21:07:13 ] Starting generation 1 of 200...[ 2023-09-06 21:07:14 ]            1 |          0: 0: 3 |             2F2F4D78 |           8.3680e+01 |           1.2262e+02 |           3.3862e+01 |           6.8243e-01 | 
+[ 2023-09-06 21:07:14 ] Starting generation 2 of 200...[ 2023-09-06 21:07:15 ]            2 |          0: 0: 5 |             2F2F4D78 |           8.3680e+01 |           1.3606e+02 |           1.4970e+02 |           6.1501e-01 | 
+[ 2023-09-06 21:07:15 ] Starting generation 3 of 200...[ 2023-09-06 21:07:17 ]            3 |          0: 0: 6 |             2F2F4D78 |           8.3680e+01 |           1.1396e+02 |           4.2893e+01 |           7.3430e-01 | 
+[ 2023-09-06 21:07:17 ] Starting generation 4 of 200...[ 2023-09-06 21:07:18 ]            4 |          0: 0: 8 |             2F2F4D78 |           8.3680e+01 |           1.1584e+02 |           6.0143e+01 |           7.2236e-01 | 
+[ 2023-09-06 21:07:18 ] Starting generation 5 of 200...[ 2023-09-06 21:07:19 ] Stop request received. The program will stop on next generation.
+[ 2023-09-06 21:07:19 ]            5 |          0: 0: 9 |             2F2F4D78 |           8.3680e+01 |           1.4570e+02 |           2.4404e+02 |           5.7435e-01 | 
+[ 2023-09-06 21:07:19 ] Writing optimization results to file "D:\ev24-cad\02_Suspension\EV24 Optimum\EV24 Suspension\R2Optimization_results_2023-09-06_17-07-10.csv"
+[ 2023-09-06 21:07:19 ] Writing population results to file "D:\ev24-cad\02_Suspension\EV24 Optimum\EV24 Suspension\R2Optimization_resulting_population_2023-09-06_17-07-10.csv"
+[ 2023-09-06 21:07:19 ] Results written successfully.
+[ 2023-09-06 21:07:19 ] Optimization finished in 9 seconds.

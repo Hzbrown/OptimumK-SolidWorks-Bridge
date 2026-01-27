@@ -1,0 +1,44 @@
+[ 2023-09-03 20:41:50 ] Starting Genetic Algorithm
+
+	<< Configuration >> 
+
+           Number of threads: 10
+             Population size: 50
+  Selection for reproduction: Truncation, tournamentSize=3 selectionSize=10
+   Selection for replacement: Steady state, selectionSize=20
+                   Crossover: Voluminal, alpha=2
+                    Mutation: Gaussian, stddev=2
+        Mutation Rate (base): 0.05
+                  Boundaries: 
+	{
+		0 : {
+			UPRI_tie_l :  SphericalBoundary : center=[          0.077866195,          0.582071272,          0.186911673 ]; radius=0.050000000
+			TIE_l : BoxBoundary : lower=[          0.026200000,          0.212408000,          0.135000000 ]; upper=[          0.126200000,          0.212408000,          0.235000000 ]
+		}
+
+	}
+        Evaluation functions: 
+	{
+		Heave : {
+			front.tie_rod_angle_top_view_l | weight: 57.295779513
+			front.toe_angle_l | weight: 57.295779513
+		 }
+	}
+	<< End configuration >> 
+
+
+[ 2023-09-03 20:41:50 ] Creating individual zero... Done.
+[ 2023-09-03 20:41:50 ] Evaluating individual zero...Done.
+[ 2023-09-03 20:41:50 ] Individual zero overall fitness: 0.330631470.
+[ 2023-09-03 20:41:50 ]   Generation |     Elapsed time |      Best individual |         Best fitness |      Average fitness |    Fitness std. dev. |   Selection pressure | 
+[ 2023-09-03 20:41:51 ]            0 |          0: 0: 1 |             2D91DCC0 |          0.330631470 |           4.8072e+00 |           2.3361e+00 |           6.8778e-02 | 
+[ 2023-09-03 20:41:51 ] Starting generation 1 of 200...[ 2023-09-03 20:41:52 ]            1 |          0: 0: 1 |             2D91DCC0 |           3.3063e-01 |           3.4617e+00 |           1.7204e+00 |           9.5510e-02 | 
+[ 2023-09-03 20:41:52 ] Starting generation 2 of 200...[ 2023-09-03 20:41:52 ]            2 |          0: 0: 1 |             2D91DCC0 |           3.3063e-01 |           3.3736e+00 |           3.1094e+00 |           9.8007e-02 | 
+[ 2023-09-03 20:41:52 ] Starting generation 3 of 200...[ 2023-09-03 20:41:53 ]            3 |          0: 0: 2 |             2D91DCC0 |           3.3063e-01 |           2.8298e+00 |           2.4186e+00 |           1.1684e-01 | 
+[ 2023-09-03 20:41:53 ] Starting generation 4 of 200...[ 2023-09-03 20:41:53 ]            4 |          0: 0: 2 |             2D91DCC0 |           3.3063e-01 |           2.4808e+00 |           2.4541e+00 |           1.3327e-01 | 
+[ 2023-09-03 20:41:53 ] Starting generation 5 of 200...[ 2023-09-03 20:41:53 ]            5 |          0: 0: 3 |             2D91DCC0 |           3.3063e-01 |           1.7300e+00 |           1.0158e+00 |           1.9111e-01 | 
+[ 2023-09-03 20:41:53 ] Starting generation 6 of 200...[ 2023-09-03 20:41:54 ]            6 |          0: 0: 3 |             31163060 |           3.1337e-01 |           2.3159e+00 |           2.5564e+00 |           1.3531e-01 | 
+[ 2023-09-03 20:41:54 ] Starting generation 7 of 200...[ 2023-09-03 20:41:54 ]            7 |          0: 0: 3 |             31163060 |           3.1337e-01 |           1.8360e+00 |           2.7426e+00 |           1.7068e-01 | 
+[ 2023-09-03 20:41:54 ] Starting generation 8 of 200...[ 2023-09-03 20:41:55 ]            8 |          0: 0: 4 |             31163060 |           3.1337e-01 |           1.6768e+00 |           2.4996e+00 |           1.8688e-01 | 
+[ 2023-09-03 20:41:55 ] Starting generation 9 of 200...[ 2023-09-03 20:41:55 ] Aborting optimization process...
+Optimization aborted. Quitting.

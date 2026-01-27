@@ -1,0 +1,50 @@
+[ 2023-09-12 17:21:22 ] Starting Genetic Algorithm
+
+	<< Configuration >> 
+
+           Number of threads: 10
+             Population size: 100
+  Selection for reproduction: Truncation, tournamentSize=3 selectionSize=10
+   Selection for replacement: Steady state, selectionSize=20
+                   Crossover: Voluminal, alpha=2
+                    Mutation: Gaussian, stddev=2
+        Mutation Rate (base): 0.05
+                  Boundaries: 
+	{
+		1 : {
+			CHAS_coil_over_l :  CylindricalBoundary : p1=[          0.025400000,          0.200000000,          0.359872000 ]; p2=[          0.025400000,          0.200000000,          0.359872000 ]; radius=0.001000000
+			CHAS_upper_aft_l :  CylindricalBoundary : p1=[         -0.115951000,          0.215900000,          0.131267000 ]; p2=[         -0.115951000,          0.215900000,          0.131267000 ]; radius=0.001000000
+			CHAS_upper_fore_l :  CylindricalBoundary : p1=[          0.217400000,          0.215900000,          0.131267000 ]; p2=[          0.217400000,          0.215900000,          0.131267000 ]; radius=0.001000000
+			ROCK_coil_over_l : BoxBoundary : lower=[          0.025400000,          0.225000000,          0.350000000 ]; upper=[          0.025400000,          0.330000000,          0.425000000 ]
+			ROCK_p_rod_l : BoxBoundary : lower=[          0.025400000,          0.305000000,          0.266395000 ]; upper=[          0.025400000,          0.405437000,          0.366395000 ]
+			TIE_l :  CylindricalBoundary : p1=[         -0.114300000,          0.209550000,          0.131267000 ]; p2=[         -0.114300000,          0.209550000,          0.131267000 ]; radius=0.001000000
+			UPRI_tie_l :  CylindricalBoundary : p1=[         -0.074505442,          0.595550701,          0.221084220 ]; p2=[         -0.074505442,          0.595550701,          0.221084220 ]; radius=0.040000000
+		}
+
+	}
+        Evaluation functions: 
+	{
+		Heave : {
+			rear.coil_over_length_l | weight: 101000.000000000
+			rear.side_view_swing_arm_angle_l | weight: 2864.788975654
+			rear.toe_angle_l | weight: 8594.366926962
+			rear.roll_center_gnd.z | weight: 40000.000000000
+			rear.tie_rod_angle_top_view_l | weight: 57.295779513
+			rear.p_rod_length_l | weight: 100.000000000
+			rear.motion_ratio_heave_l | weight: 150.000000000
+		 }
+
+		Roll : {
+			rear.side_view_swing_arm_angle_l | weight: 2864.788975654
+			rear.camber_angle_gain_roll_l | weight: 100.000000000
+		 }
+	}
+	<< End configuration >> 
+
+
+[ 2023-09-12 17:21:22 ] Creating individual zero... Done.
+[ 2023-09-12 17:21:22 ] Evaluating individual zero...Done.
+[ 2023-09-12 17:21:22 ] Individual zero overall fitness: 1505.112421160.
+[ 2023-09-12 17:21:22 ]   Generation |     Elapsed time |      Best individual |         Best fitness |      Average fitness |    Fitness std. dev. |   Selection pressure | 
+[ 2023-09-12 17:21:25 ] Aborting optimization process...
+Optimization aborted. Quitting.

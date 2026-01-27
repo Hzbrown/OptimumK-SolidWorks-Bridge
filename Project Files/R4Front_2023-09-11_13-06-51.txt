@@ -1,0 +1,67 @@
+[ 2023-09-11 17:06:51 ] Starting Genetic Algorithm
+
+	<< Configuration >> 
+
+           Number of threads: 10
+             Population size: 100
+  Selection for reproduction: Truncation, tournamentSize=3 selectionSize=10
+   Selection for replacement: Steady state, selectionSize=20
+                   Crossover: Voluminal, alpha=2
+                    Mutation: Gaussian, stddev=2
+        Mutation Rate (base): 0.05
+                  Boundaries: 
+	{
+		0 : {
+			CHAS_upper_aft_l :  CylindricalBoundary : p1=[         -0.076200000,          0.215900000,          0.131267000 ]; p2=[         -0.076200000,          0.215900000,          0.131267000 ]; radius=0.001000000
+			CHAS_upper_fore_l :  CylindricalBoundary : p1=[          0.107950000,          0.215900000,          0.131267000 ]; p2=[          0.107950000,          0.215900000,          0.131267000 ]; radius=0.001000000
+			ROCK_coil_over_l : BoxBoundary : lower=[          0.003837000,          0.236000000,          0.649000000 ]; upper=[          0.003837000,          0.300000000,          0.651000000 ]
+			ROCK_p_rod_l : BoxBoundary : lower=[          0.003837000,          0.250000000,          0.550000000 ]; upper=[          0.003837000,          0.351355000,          0.675446000 ]
+			TIE_l : BoxBoundary : lower=[          0.010000000,          0.212408000,          0.150000000 ]; upper=[          0.150000000,          0.212408000,          0.235000000 ]
+			UPRI_tie_l :  CylindricalBoundary : p1=[          0.074787992,          0.646173964,          0.201941255 ]; p2=[          0.074787992,          0.646173964,          0.201941255 ]; radius=0.040000000
+		}
+
+	}
+        Evaluation functions: 
+	{
+		Heave : {
+			front.tie_rod_angle_top_view_l | weight: 57.295779513
+			front.toe_angle_l | weight: 2864.788975654
+			front.motion_ratio_heave_l | weight: 60.000000000
+			front.side_view_swing_arm_angle_l | weight: 2864.788975654
+		 }
+
+		Roll : {
+			front.camber_angle_gain_roll_l | weight: 100.000000000
+			front.side_view_swing_arm_angle_l | weight: 2864.788975654
+			front.roll_center.y | weight: 1000.000000000
+		 }
+
+		Steering : {
+			front.tie_rod_angle_front_view_l | weight: 57.295779513
+			front.ackerman_angle | weight: 1145.915590262
+		 }
+	}
+	<< End configuration >> 
+
+
+[ 2023-09-11 17:06:51 ] Creating individual zero... Done.
+[ 2023-09-11 17:06:51 ] Evaluating individual zero...Done.
+[ 2023-09-11 17:06:51 ] Individual zero overall fitness: 131.685326077.
+[ 2023-09-11 17:06:51 ]   Generation |     Elapsed time |      Best individual |         Best fitness |      Average fitness |    Fitness std. dev. |   Selection pressure | 
+[ 2023-09-11 17:06:57 ]            0 |          0: 0: 6 |             1BA5D518 |         81.608870022 |           3.5648e+02 |           3.2715e+02 |           2.2893e-01 | 
+[ 2023-09-11 17:06:57 ] Starting generation 1 of 200...[ 2023-09-11 17:06:59 ]            1 |          0: 0: 7 |             1BA5D518 |           8.1609e+01 |           4.0456e+02 |           4.1183e+02 |           2.0172e-01 | 
+[ 2023-09-11 17:06:59 ] Starting generation 2 of 200...[ 2023-09-11 17:07:00 ]            2 |          0: 0: 8 |             1BA5D518 |           8.1609e+01 |           4.0458e+02 |           3.6947e+02 |           2.0171e-01 | 
+[ 2023-09-11 17:07:00 ] Starting generation 3 of 200...[ 2023-09-11 17:07:01 ]            3 |          0: 0: 9 |             1BA5D518 |           8.1609e+01 |           3.5433e+02 |           2.5778e+02 |           2.3032e-01 | 
+[ 2023-09-11 17:07:01 ] Starting generation 4 of 200...[ 2023-09-11 17:07:02 ]            4 |          0: 0:10 |             1BA5D518 |           8.1609e+01 |           3.2558e+02 |           2.0560e+02 |           2.5066e-01 | 
+[ 2023-09-11 17:07:02 ] Starting generation 5 of 200...[ 2023-09-11 17:07:04 ]            5 |          0: 0:12 |             1BA5D518 |           8.1609e+01 |           3.9956e+02 |           3.6551e+02 |           2.0425e-01 | 
+[ 2023-09-11 17:07:04 ] Starting generation 6 of 200...[ 2023-09-11 17:07:05 ]            6 |          0: 0:13 |             1BA5D518 |           8.1609e+01 |           3.4902e+02 |           3.8957e+02 |           2.3382e-01 | 
+[ 2023-09-11 17:07:05 ] Starting generation 7 of 200...[ 2023-09-11 17:07:06 ]            7 |          0: 0:15 |             1BA5D518 |           8.1609e+01 |           3.4240e+02 |           2.6191e+02 |           2.3834e-01 | 
+[ 2023-09-11 17:07:06 ] Starting generation 8 of 200...[ 2023-09-11 17:07:07 ]            8 |          0: 0:16 |             1BA5D518 |           8.1609e+01 |           2.9922e+02 |           2.5784e+02 |           2.7274e-01 | 
+[ 2023-09-11 17:07:07 ] Starting generation 9 of 200...[ 2023-09-11 17:07:09 ]            9 |          0: 0:17 |             1BA5D518 |           8.1609e+01 |           2.5885e+02 |           1.1643e+02 |           3.1528e-01 | 
+[ 2023-09-11 17:07:09 ] Starting generation 10 of 200...[ 2023-09-11 17:07:10 ]           10 |          0: 0:19 |             1BA5D518 |           8.1609e+01 |           3.0615e+02 |           2.6668e+02 |           2.6657e-01 | 
+[ 2023-09-11 17:07:10 ] Starting generation 11 of 200...[ 2023-09-11 17:07:11 ]           11 |          0: 0:20 |             1BA5D518 |           8.1609e+01 |           3.0434e+02 |           2.2590e+02 |           2.6815e-01 | 
+[ 2023-09-11 17:07:11 ] Starting generation 12 of 200...[ 2023-09-11 17:07:13 ]           12 |          0: 0:21 |             1BA5D518 |           8.1609e+01 |           2.8918e+02 |           2.1288e+02 |           2.8221e-01 | 
+[ 2023-09-11 17:07:13 ] Starting generation 13 of 200...[ 2023-09-11 17:07:14 ]           13 |          0: 0:22 |             1BA5D518 |           8.1609e+01 |           3.1010e+02 |           2.5312e+02 |           2.6317e-01 | 
+[ 2023-09-11 17:07:14 ] Starting generation 14 of 200...[ 2023-09-11 17:07:15 ]           14 |          0: 0:23 |             1BA5D518 |           8.1609e+01 |           2.8237e+02 |           2.0387e+02 |           2.8901e-01 | 
+[ 2023-09-11 17:07:15 ] Starting generation 15 of 200...[ 2023-09-11 17:07:16 ] Aborting optimization process...
+Optimization aborted. Quitting.

@@ -1,0 +1,69 @@
+[ 2023-09-11 04:26:48 ] Starting Genetic Algorithm
+
+	<< Configuration >> 
+
+           Number of threads: 10
+             Population size: 50
+  Selection for reproduction: Truncation, tournamentSize=3 selectionSize=10
+   Selection for replacement: Steady state, selectionSize=20
+                   Crossover: Voluminal, alpha=2
+                    Mutation: Gaussian, stddev=2
+        Mutation Rate (base): 0.05
+                  Boundaries: 
+	{
+		0 : {
+			CHAS_upper_aft_l :  CylindricalBoundary : p1=[         -0.076200000,          0.215900000,          0.131267000 ]; p2=[         -0.076200000,          0.215900000,          0.131267000 ]; radius=0.001000000
+			CHAS_upper_fore_l :  CylindricalBoundary : p1=[          0.107950000,          0.215900000,          0.131267000 ]; p2=[          0.107950000,          0.215900000,          0.131267000 ]; radius=0.001000000
+			ROCK_coil_over_l : BoxBoundary : lower=[          0.003837000,          0.236000000,          0.649000000 ]; upper=[          0.003837000,          0.300000000,          0.651000000 ]
+			ROCK_p_rod_l : BoxBoundary : lower=[          0.003837000,          0.250000000,          0.550000000 ]; upper=[          0.003837000,          0.351355000,          0.675446000 ]
+			TIE_l : BoxBoundary : lower=[          0.020000000,          0.212408000,          0.150000000 ]; upper=[          0.126200000,          0.212408000,          0.235000000 ]
+			UPRI_tie_l :  CylindricalBoundary : p1=[          0.075506834,          0.643715249,          0.201545123 ]; p2=[          0.075506834,          0.643715249,          0.201545123 ]; radius=0.020000000
+		}
+
+	}
+        Evaluation functions: 
+	{
+		Heave : {
+			front.tie_rod_angle_top_view_l | weight: 57.295779513
+			front.toe_angle_l | weight: 5729.577951308
+			front.motion_ratio_heave_l | weight: 30.000000000
+			front.side_view_swing_arm_angle_l | weight: 2864.788975654
+		 }
+
+		Roll : {
+			front.camber_angle_gain_roll_l | weight: 1.000000000
+			front.roll_center.y | weight: 1000.000000000
+			front.side_view_swing_arm_angle_l | weight: 57.295779513
+		 }
+
+		Steering : {
+			front.ackerman_angle | weight: 57.295779513
+			front.tie_rod_angle_front_view_l | weight: 57.295779513
+		 }
+	}
+	<< End configuration >> 
+
+
+[ 2023-09-11 04:26:48 ] Creating individual zero... Done.
+[ 2023-09-11 04:26:48 ] Evaluating individual zero...Done.
+[ 2023-09-11 04:26:49 ] Individual zero overall fitness: 60.984989236.
+[ 2023-09-11 04:26:49 ]   Generation |     Elapsed time |      Best individual |         Best fitness |      Average fitness |    Fitness std. dev. |   Selection pressure | 
+[ 2023-09-11 04:26:52 ]            0 |          0: 0: 4 |             219424C8 |         54.391124069 |           1.9783e+02 |           1.0364e+02 |           2.7493e-01 | 
+[ 2023-09-11 04:26:52 ] Starting generation 1 of 200...[ 2023-09-11 04:26:54 ]            1 |          0: 0: 5 |             219424C8 |           5.4391e+01 |           2.6036e+02 |           2.4179e+02 |           2.0891e-01 | 
+[ 2023-09-11 04:26:54 ] Starting generation 2 of 200...[ 2023-09-11 04:26:55 ]            2 |          0: 0: 6 |             219424C8 |           5.4391e+01 |           2.3974e+02 |           2.2577e+02 |           2.2687e-01 | 
+[ 2023-09-11 04:26:55 ] Starting generation 3 of 200...[ 2023-09-11 04:26:57 ]            3 |          0: 0: 8 |             219424C8 |           5.4391e+01 |           2.6780e+02 |           2.7914e+02 |           2.0310e-01 | 
+[ 2023-09-11 04:26:57 ] Starting generation 4 of 200...[ 2023-09-11 04:26:58 ]            4 |          0: 0: 9 |             219424C8 |           5.4391e+01 |           1.6825e+02 |           1.2278e+02 |           3.2327e-01 | 
+[ 2023-09-11 04:26:58 ] Starting generation 5 of 200...[ 2023-09-11 04:27:00 ]            5 |          0: 0:11 |             219424C8 |           5.4391e+01 |           2.0445e+02 |           2.0779e+02 |           2.6603e-01 | 
+[ 2023-09-11 04:27:00 ] Starting generation 6 of 200...[ 2023-09-11 04:27:01 ]            6 |          0: 0:12 |             219424C8 |           5.4391e+01 |           1.8280e+02 |           1.6775e+02 |           2.9754e-01 | 
+[ 2023-09-11 04:27:01 ] Starting generation 7 of 200...[ 2023-09-11 04:27:02 ]            7 |          0: 0:13 |             219424C8 |           5.4391e+01 |           2.0431e+02 |           2.3061e+02 |           2.6622e-01 | 
+[ 2023-09-11 04:27:02 ] Starting generation 8 of 200...[ 2023-09-11 04:27:04 ]            8 |          0: 0:15 |             219424C8 |           5.4391e+01 |           1.5652e+02 |           2.5966e+02 |           3.4751e-01 | 
+[ 2023-09-11 04:27:04 ] Starting generation 9 of 200...[ 2023-09-11 04:27:05 ]            9 |          0: 0:16 |             219424C8 |           5.4391e+01 |           1.4103e+02 |           1.1151e+02 |           3.8567e-01 | 
+[ 2023-09-11 04:27:05 ] Starting generation 10 of 200...[ 2023-09-11 04:27:07 ]           10 |          0: 0:18 |             212CEA78 |           4.5139e+01 |           1.1457e+02 |           9.3394e+01 |           3.9400e-01 | 
+[ 2023-09-11 04:27:07 ] Starting generation 11 of 200...[ 2023-09-11 04:27:08 ]           11 |          0: 0:19 |             212CEA78 |           4.5139e+01 |           1.6370e+02 |           1.6217e+02 |           2.7574e-01 | 
+[ 2023-09-11 04:27:08 ] Starting generation 12 of 200...[ 2023-09-11 04:27:10 ]           12 |          0: 0:21 |             212CEA78 |           4.5139e+01 |           1.4833e+02 |           2.7903e+02 |           3.0432e-01 | 
+[ 2023-09-11 04:27:10 ] Starting generation 13 of 200...[ 2023-09-11 04:27:11 ]           13 |          0: 0:22 |             212CEA78 |           4.5139e+01 |           8.9251e+01 |           4.5762e+01 |           5.0576e-01 | 
+[ 2023-09-11 04:27:11 ] Starting generation 14 of 200...[ 2023-09-11 04:27:12 ]           14 |          0: 0:23 |             212CEA78 |           4.5139e+01 |           1.1000e+02 |           9.7490e+01 |           4.1035e-01 | 
+[ 2023-09-11 04:27:12 ] Starting generation 15 of 200...[ 2023-09-11 04:27:14 ]           15 |          0: 0:25 |             212CEA78 |           4.5139e+01 |           1.1932e+02 |           2.1044e+02 |           3.7831e-01 | 
+[ 2023-09-11 04:27:14 ] Starting generation 16 of 200...[ 2023-09-11 04:27:15 ]           16 |          0: 0:26 |             212CEA78 |           4.5139e+01 |           1.7590e+02 |           3.5923e+02 |           2.5662e-01 | 
+[ 2023-09-11 04:27:15 ] Starting generation 17 of 200...[ 2023-09-11 04:27:17 ] Aborting optimization process...
+Optimization aborted. Quitting.
