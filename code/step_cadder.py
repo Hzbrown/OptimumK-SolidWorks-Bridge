@@ -64,7 +64,7 @@ class carAssembly:
         # Sphere marker
         pt = cq.Workplane("XY").sphere(size)
         # Small blue sphere as sketch point
-        sketch_point = cq.Workplane("XY").sphere(size * 0.3)
+        sketch_point = cq.Workplane("XY").sphere(size * 0.3).translate((0, 0, 0))  # Remove or adjust as needed
 
         # Add both to the assembly
         assy.add(
@@ -113,51 +113,55 @@ class carAssembly:
         return assy
     
 
+    @staticmethod
     def draw_wheels(wheel: dict, assembly: cq.Assembly) -> cq.Assembly:
         """
-        Draws two hollow black cylinders for left and right wheels based on wheel parameters in the JSON schema.
-        - Outer diameter: Tire Diameter
-        - Inner diameter: Rim Diameter
-        - Width: Tire Width
-        - Color: Black
+        Draws two hollow black cylinders for left and right wheels.
+        Assumes wheel["Half Track"][side] is already centerline -> wheel center distance.
         """
-        import numpy as np
-        for side in ["left", "right"]:
-            # Get parameters
-            tire_dia = wheel["Tire Diameter"][side]
-            rim_dia = wheel["Rim Diameter"][side]
-            width = wheel["Tire Width"][side]
-            half_track = wheel["Half Track"][side] / 2.0
-            lateral_offset = wheel["Lateral Offset"][side]
-            longitudinal_offset = wheel["Longitudinal Offset"][side]
-            vertical_offset = wheel["Vertical Offset"][side]
-            camber = wheel["Static Camber"][side]  # degrees
-            toe = wheel["Static Toe"][side]        # degrees
+        for side in ("left", "right"):
+            sign = 1.0 if side == "left" else -1.0
 
-            # Center position (x, y, z):
-            y_pos = half_track + lateral_offset if side == "left" else -(half_track + lateral_offset)
-            x_pos = longitudinal_offset
-            z_pos = vertical_offset
+            tire_dia = float(wheel["Tire Diameter"][side])
+            rim_dia  = float(wheel["Rim Diameter"][side])
+            width    = float(wheel["Tire Width"][side])
 
-            # Create hollow cylinder (tire) along +x (front), then rotate -90 deg about x to align with +y (left)
-            outer = cq.Workplane("XY").circle(tire_dia / 2).circle(rim_dia / 2).extrude(width)
-            # Initial rotation: align cylinder axis with +y (left)
-            outer = outer.rotate((0, 0, 0), (1, 0, 0), -90)
-            # Apply camber (about +x/front), then toe (about +z/up), then translate
-            outer = outer.rotate((0, 0, 0), (1, 0, 0), camber)
-            outer = outer.rotate((0, 0, 0), (0, 0, 1), toe)
-            # Shift up by outer radius and out by half width after all rotations
-            # Outward shift is along local +y (left), which is global +y for left, -y for right
-            y_shift = width / 2 if side == "left" else -width / 2
-            outer = outer.translate((x_pos, y_pos + y_shift, z_pos + tire_dia / 2))
+            half_track = float(wheel["Half Track"][side])          # <-- NO /2
+            lat_off    = float(wheel["Lateral Offset"][side])
+            lon_off    = float(wheel["Longitudinal Offset"][side])
+            vert_off   = float(wheel["Vertical Offset"][side])
 
-            assembly.add(
-                outer,
-                name=f"Wheel_{side}",
-                color=cq.Color(0, 0, 0),
+            camber = float(wheel["Static Camber"][side])           # deg
+            toe    = float(wheel["Static Toe"][side])              # deg
+
+            # Wheel center position
+            x_pos = lon_off
+            y_pos = sign * (half_track + lat_off)
+            z_pos = vert_off
+
+            # Hollow cylinder centered about its extrusion axis
+            tire = (
+                cq.Workplane("XY")
+                .circle(tire_dia / 2.0)
+                .circle(rim_dia / 2.0)
+                .extrude(width/2, both=True)                         # <-- centered, no y_shift needed
             )
+
+            # Extrude is along +Z; rotate so wheel axis is +Y
+            tire = tire.rotate((0, 0, 0), (1, 0, 0), -90)
+
+            # Apply camber (about +X) and toe (about +Z)
+            tire = tire.rotate((0, 0, 0), (1, 0, 0), camber)
+            tire = tire.rotate((0, 0, 0), (0, 0, 1), toe)
+
+            # Put tire on "ground" by lifting by radius, then apply offsets
+            tire = tire.translate((x_pos, y_pos, z_pos + tire_dia / 2.0))
+
+            assembly.add(tire, name=f"Wheel_{side}", color=cq.Color(0, 0, 0))
+
         return assembly
-    
+
+
     def draw(self, setup: dict) -> cq.Assembly:
         """Draws the car assembly with front and rear suspensions, offsetting rear by reference distance."""
         front_assy = carAssembly.draw_suspension(self.front_suspension, "Front Suspension")

@@ -40,30 +40,88 @@ class OptimumSheetParser:
         return parsed
 
     def _parse_points_block(self, block_rows):
-        # Parse points: point_name -> point_L, point_R
-        header = [str(h).strip() if h is not None else "" for h in block_rows[0]]
-        name_idx = header.index("Point Name") if "Point Name" in header else 1
-        left_x_idx = None
-        for i, h in enumerate(header):
-            if h.lower() == "x" and i > name_idx:
-                left_x_idx = i
-                break
-        if left_x_idx is None:
-            left_x_idx = 2  # fallback
-        left_y_idx = left_x_idx + 1 if left_x_idx + 1 < len(header) else None
-        left_z_idx = left_x_idx + 2 if left_x_idx + 2 < len(header) else None
+        # Header row (has "Left"/"Right") and optional subheader row (has X/Y/Z)
+        hdr0 = [str(h).strip() if h is not None else "" for h in block_rows[0]]
+        hdr1 = [str(h).strip() if h is not None else "" for h in block_rows[1]] if len(block_rows) > 1 else []
+
+        # Identify if second row is an X/Y/Z subheader
+        has_xyz = hdr1 and ("X" in hdr1 and "Y" in hdr1 and "Z" in hdr1)
+
+        name_idx = hdr0.index("Point Name") if "Point Name" in hdr0 else 1
+
+        left_anchor = hdr0.index("Left") if "Left" in hdr0 else None
+        right_anchor = hdr0.index("Right") if "Right" in hdr0 else None
+
+        def find_xyz_cols(anchor, stop_at):
+            """
+            Find X/Y/Z columns in hdr1 between anchor..stop_at (exclusive).
+            If hdr1 doesn't exist, fall back to anchor+1..anchor+3.
+            """
+            if anchor is None:
+                return None, None, None
+
+            if has_xyz:
+                lo = anchor
+                hi = stop_at if (stop_at is not None and stop_at > anchor) else len(hdr1)
+                # search region for X/Y/Z labels
+                def find_label(label):
+                    for j in range(lo, hi):
+                        if hdr1[j] == label:
+                            return j
+                    return None
+
+                xj = find_label("X")
+                yj = find_label("Y")
+                zj = find_label("Z")
+
+                # If labels are missing (some files), fall back to contiguous after first found
+                if xj is not None and yj is None and xj + 1 < hi:
+                    yj = xj + 1
+                if xj is not None and zj is None and xj + 2 < hi:
+                    zj = xj + 2
+
+                return xj, yj, zj
+
+            # fallback for 1-row header files
+            return anchor + 1, anchor + 2, anchor + 3
+
+        left_x_idx, left_y_idx, left_z_idx = find_xyz_cols(left_anchor, right_anchor)
+        right_x_idx, right_y_idx, right_z_idx = find_xyz_cols(right_anchor, None)
+
+        # data starts after the header rows (skip subheader if present)
+        data_start = 2 if has_xyz else 1
+
+        def f(v):
+            try:
+                return float(v)
+            except (TypeError, ValueError):
+                return None
 
         points = {}
-        for row in block_rows[1:]:
+        for row in block_rows[data_start:]:
             if all(cell is None for cell in row):
                 continue
+
             name = row[name_idx] if name_idx < len(row) else None
-            x = row[left_x_idx] if left_x_idx is not None and left_x_idx < len(row) else None
-            y = row[left_y_idx] if left_y_idx is not None and left_y_idx < len(row) else None
-            z = row[left_z_idx] if left_z_idx is not None and left_z_idx < len(row) else None
-            if name and isinstance(name, str):
-                points[f"{name}_L"] = [x if x is not None else 0, y if y is not None else 0, z if z is not None else 0]
-                points[f"{name}_R"] = [x if x is not None else 0, y if y is not None else 0, z if z is not None else 0]  # Placeholder for right side
+            if not (name and isinstance(name, str)):
+                continue
+
+            x_l = f(row[left_x_idx]) if left_x_idx is not None and left_x_idx < len(row) else None
+            y_l = f(row[left_y_idx]) if left_y_idx is not None and left_y_idx < len(row) else None
+            z_l = f(row[left_z_idx]) if left_z_idx is not None and left_z_idx < len(row) else None
+
+            x_r = f(row[right_x_idx]) if right_x_idx is not None and right_x_idx < len(row) else x_l
+            y_r = f(row[right_y_idx]) if right_y_idx is not None and right_y_idx < len(row) else y_l
+            z_r = f(row[right_z_idx]) if right_z_idx is not None and right_z_idx < len(row) else z_l
+
+            # Keep your "None -> 0" behavior:
+            points[f"{name}_L"] = [x_l if x_l is not None else 0.0,
+                                  y_l if y_l is not None else 0.0,
+                                  z_l if z_l is not None else 0.0]
+            points[f"{name}_R"] = [x_r if x_r is not None else 0.0,
+                                  y_r if y_r is not None else 0.0,
+                                  z_r if z_r is not None else 0.0]
+
         return points
 
     def _parse_wheels_block(self, block_rows):
