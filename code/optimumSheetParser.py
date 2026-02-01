@@ -171,10 +171,9 @@ class OptimumSheetParser:
 
     def save_json_per_sheet(self, results_dir: str = "results"):
         """
-        Save each sheet as its own JSON file in /results/<excel_name>/<sheet_name>.json
+        Save each sheet as its own JSON file directly in /results/<sheet_name>.json
         """
-        excel_name = self.file_path.stem
-        base_dir = pathlib.Path(results_dir) / excel_name
+        base_dir = pathlib.Path(results_dir)
         base_dir.mkdir(parents=True, exist_ok=True)
         parsed = self.parse()
         for sheet_name, sheet_data in parsed.items():
@@ -225,11 +224,10 @@ class OptimumSheetParser:
 
     def save_reference_distance(self, results_dir: str = "results"):
         """
-        Save the parsed reference distance to a JSON file in the results directory.
+        Save the parsed reference distance to a JSON file directly in the results directory.
         """
         ref_dist = self.parse_reference_distance()
-        excel_name = self.file_path.stem
-        base_dir = pathlib.Path(results_dir) / excel_name
+        base_dir = pathlib.Path(results_dir)
         base_dir.mkdir(parents=True, exist_ok=True)
         out_path = base_dir / "Vehicle_Setup.json"
         with open(out_path, "w", encoding="utf-8") as f:
