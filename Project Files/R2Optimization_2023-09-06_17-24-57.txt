@@ -1,78 +1,0 @@
-[ 2023-09-06 21:24:57 ] Starting Genetic Algorithm
-
-	<< Configuration >> 
-
-           Number of threads: 10
-             Population size: 50
-  Selection for reproduction: Truncation, tournamentSize=3 selectionSize=10
-   Selection for replacement: Steady state, selectionSize=20
-                   Crossover: Voluminal, alpha=2
-                    Mutation: Gaussian, stddev=2
-        Mutation Rate (base): 0.05
-                  Boundaries: 
-	{
-		0 : {
-			CHAS_upper_aft_l :  CylindricalBoundary : p1=[         -0.076200000,          0.215900000,          0.131267000 ]; p2=[         -0.076200000,          0.215900000,          0.131267000 ]; radius=0.001000000
-			CHAS_upper_fore_l :  CylindricalBoundary : p1=[          0.107950000,          0.215900000,          0.131267000 ]; p2=[          0.107950000,          0.215900000,          0.131267000 ]; radius=0.001000000
-			TIE_l : BoxBoundary : lower=[          0.020000000,          0.212408000,          0.150000000 ]; upper=[          0.126200000,          0.212408000,          0.235000000 ]
-			UPRI_tie_l :  CylindricalBoundary : p1=[          0.075405513,          0.644079775,          0.185722012 ]; p2=[          0.075405513,          0.644079775,          0.185722012 ]; radius=0.020000000
-		}
-
-	}
-        Evaluation functions: 
-	{
-		Heave : {
-			front.half_track_l | weight: 1000.000000000
-			front.toe_angle_l | weight: 57.295779513
-			front.tie_rod_angle_top_view_l | weight: 57.295779513
-			front.roll_center.z | weight: 1000.000000000
-			front.side_view_swing_arm_angle_l | weight: 57.295779513
-		 }
-
-		Roll : {
-			front.camber_angle_gain_roll_r | weight: 1.000000000
-			front.roll_center.y | weight: 1000.000000000
-		 }
-
-		Steering : {
-			front.ackerman_angle | weight: 57.295779513
-			front.tie_rod_angle_front_view_l | weight: 57.295779513
-		 }
-	}
-	<< End configuration >> 
-
-
-[ 2023-09-06 21:24:57 ] Creating individual zero... Done.
-[ 2023-09-06 21:24:57 ] Evaluating individual zero...Done.
-[ 2023-09-06 21:24:57 ] Individual zero overall fitness: 53.904249417.
-[ 2023-09-06 21:24:57 ]   Generation |     Elapsed time |      Best individual |         Best fitness |      Average fitness |    Fitness std. dev. |   Selection pressure | 
-[ 2023-09-06 21:25:00 ]            0 |          0: 0: 2 |             31D96540 |         53.904249417 |           9.6971e+01 |           2.7764e+01 |           5.5588e-01 | 
-[ 2023-09-06 21:25:00 ] Starting generation 1 of 200...[ 2023-09-06 21:25:01 ]            1 |          0: 0: 4 |             31D96540 |           5.3904e+01 |           9.3507e+01 |           7.4163e+01 |           5.7648e-01 | 
-[ 2023-09-06 21:25:01 ] Starting generation 2 of 200...[ 2023-09-06 21:25:02 ]            2 |          0: 0: 5 |             31D96540 |           5.3904e+01 |           7.9617e+01 |           4.3803e+01 |           6.7705e-01 | 
-[ 2023-09-06 21:25:02 ] Starting generation 3 of 200...[ 2023-09-06 21:25:04 ]            3 |          0: 0: 6 |             31D96540 |           5.3904e+01 |           7.0585e+02 |           4.4324e+03 |           7.6368e-02 | 
-[ 2023-09-06 21:25:04 ] Starting generation 4 of 200...[ 2023-09-06 21:25:05 ]            4 |          0: 0: 8 |             31D96540 |           5.3904e+01 |           7.1945e+01 |           3.1040e+01 |           7.4924e-01 | 
-[ 2023-09-06 21:25:05 ] Starting generation 5 of 200...[ 2023-09-06 21:25:06 ]            5 |          0: 0: 9 |             336FE950 |           5.3183e+01 |           7.0184e+01 |           2.6922e+01 |           7.5777e-01 | 
-[ 2023-09-06 21:25:06 ] Starting generation 6 of 200...[ 2023-09-06 21:25:08 ]            6 |          0: 0:11 |             336FE950 |           5.3183e+01 |           8.4843e+01 |           1.4904e+02 |           6.2684e-01 | 
-[ 2023-09-06 21:25:08 ] Starting generation 7 of 200...[ 2023-09-06 21:25:09 ]            7 |          0: 0:12 |             336FE950 |           5.3183e+01 |           1.1767e+02 |           2.8404e+02 |           4.5198e-01 | 
-[ 2023-09-06 21:25:09 ] Starting generation 8 of 200...[ 2023-09-06 21:25:11 ]            8 |          0: 0:13 |             336FE950 |           5.3183e+01 |           8.7017e+01 |           9.6948e+01 |           6.1118e-01 | 
-[ 2023-09-06 21:25:11 ] Starting generation 9 of 200...[ 2023-09-06 21:25:12 ]            9 |          0: 0:14 |             336FE950 |           5.3183e+01 |           1.5973e+02 |           5.7431e+02 |           3.3295e-01 | 
-[ 2023-09-06 21:25:12 ] Starting generation 10 of 200...[ 2023-09-06 21:25:13 ]           10 |          0: 0:16 |             336FE950 |           5.3183e+01 |           1.0619e+02 |           2.4967e+02 |           5.0085e-01 | 
-[ 2023-09-06 21:25:13 ] Starting generation 11 of 200...[ 2023-09-06 21:25:14 ]           11 |          0: 0:17 |             336FE950 |           5.3183e+01 |           7.5555e+01 |           4.4641e+01 |           7.0389e-01 | 
-[ 2023-09-06 21:25:14 ] Starting generation 12 of 200...[ 2023-09-06 21:25:16 ]           12 |          0: 0:18 |             34780200 |           4.6914e+01 |           7.4997e+01 |           4.5651e+01 |           6.2554e-01 | 
-[ 2023-09-06 21:25:16 ] Starting generation 13 of 200...[ 2023-09-06 21:25:17 ]           13 |          0: 0:20 |             34780200 |           4.6914e+01 |           8.8488e+01 |           1.4756e+02 |           5.3017e-01 | 
-[ 2023-09-06 21:25:17 ] Starting generation 14 of 200...[ 2023-09-06 21:25:18 ]           14 |          0: 0:21 |             34780200 |           4.6914e+01 |           7.6132e+01 |           7.4354e+01 |           6.1622e-01 | 
-[ 2023-09-06 21:25:18 ] Starting generation 15 of 200...[ 2023-09-06 21:25:20 ]           15 |          0: 0:22 |             34780200 |           4.6914e+01 |           6.6281e+01 |           2.8905e+01 |           7.0780e-01 | 
-[ 2023-09-06 21:25:20 ] Starting generation 16 of 200...[ 2023-09-06 21:25:21 ]           16 |          0: 0:23 |             34780200 |           4.6914e+01 |           1.4202e+02 |           5.1649e+02 |           3.3034e-01 | 
-[ 2023-09-06 21:25:21 ] Starting generation 17 of 200...[ 2023-09-06 21:25:22 ]           17 |          0: 0:25 |             34780200 |           4.6914e+01 |           6.6485e+01 |           5.6348e+01 |           7.0562e-01 | 
-[ 2023-09-06 21:25:22 ] Starting generation 18 of 200...[ 2023-09-06 21:25:24 ]           18 |          0: 0:26 |             34780200 |           4.6914e+01 |           9.3666e+01 |           1.7648e+02 |           5.0086e-01 | 
-[ 2023-09-06 21:25:24 ] Starting generation 19 of 200...[ 2023-09-06 21:25:25 ]           19 |          0: 0:27 |             34780200 |           4.6914e+01 |           7.9148e+01 |           5.3542e+01 |           5.9273e-01 | 
-[ 2023-09-06 21:25:25 ] Starting generation 20 of 200...[ 2023-09-06 21:25:26 ]           20 |          0: 0:29 |             34780200 |           4.6914e+01 |           2.7445e+02 |           1.5115e+03 |           1.7093e-01 | 
-[ 2023-09-06 21:25:26 ] Starting generation 21 of 200...[ 2023-09-06 21:25:27 ]           21 |          0: 0:30 |             34780200 |           4.6914e+01 |           8.3773e+01 |           1.3038e+02 |           5.6001e-01 | 
-[ 2023-09-06 21:25:27 ] Starting generation 22 of 200...[ 2023-09-06 21:25:29 ]           22 |          0: 0:31 |             34780200 |           4.6914e+01 |           7.6014e+01 |           8.5832e+01 |           6.1717e-01 | 
-[ 2023-09-06 21:25:29 ] Starting generation 23 of 200...[ 2023-09-06 21:25:30 ]           23 |          0: 0:33 |             34780200 |           4.6914e+01 |           9.0360e+01 |           1.1172e+02 |           5.1918e-01 | 
-[ 2023-09-06 21:25:30 ] Starting generation 24 of 200...[ 2023-09-06 21:25:30 ] Stop request received. The program will stop on next generation.
-[ 2023-09-06 21:25:31 ]           24 |          0: 0:34 |             34780200 |           4.6914e+01 |           1.1055e+02 |           2.1733e+02 |           4.2436e-01 | 
-[ 2023-09-06 21:25:31 ] Writing optimization results to file "D:\ev24-cad\02_Suspension\EV24 Optimum\EV24 Suspension\R2Optimization_results_2023-09-06_17-24-57.csv"
-[ 2023-09-06 21:25:31 ] Writing population results to file "D:\ev24-cad\02_Suspension\EV24 Optimum\EV24 Suspension\R2Optimization_resulting_population_2023-09-06_17-24-57.csv"
-[ 2023-09-06 21:25:31 ] Results written successfully.
-[ 2023-09-06 21:25:31 ] Optimization finished in 34 seconds.

@@ -1,71 +1,0 @@
-[ 2023-09-17 15:37:49 ] Starting Genetic Algorithm
-
-	<< Configuration >> 
-
-           Number of threads: 10
-             Population size: 500
-  Selection for reproduction: Truncation, tournamentSize=3 selectionSize=10
-   Selection for replacement: Steady state, selectionSize=20
-                   Crossover: Voluminal, alpha=2
-                    Mutation: Gaussian, stddev=2
-        Mutation Rate (base): 0.05
-                  Boundaries: 
-	{
-		0 : {
-			CHAS_upper_aft_l :  CylindricalBoundary : p1=[         -0.076200000,          0.215900000,          0.131267000 ]; p2=[         -0.076200000,          0.215900000,          0.131267000 ]; radius=0.001000000
-			CHAS_coil_over_l :  CylindricalBoundary : p1=[          0.003837000,          0.000000000,          0.643396192 ]; p2=[          0.003837000,          0.000000000,          0.643396192 ]; radius=0.000100000
-			CHAS_upper_fore_l :  CylindricalBoundary : p1=[          0.107950000,          0.215900000,          0.131267000 ]; p2=[          0.107950000,          0.215900000,          0.131267000 ]; radius=0.001000000
-			UPRI_tie_l :  CylindricalBoundary : p1=[          0.000066000,          0.620000000,          0.210443000 ]; p2=[          0.000066000,          0.620000000,          0.210443000 ]; radius=0.088000000
-			ROCK_coil_over_l : BoxBoundary : lower=[          0.003837000,          0.200000000,          0.640000000 ]; upper=[          0.003837000,          0.350000000,          0.670000000 ]
-			ROCK_p_rod_l : BoxBoundary : lower=[          0.003837000,          0.250000000,          0.600000000 ]; upper=[          0.003837000,          0.300000000,          0.675446000 ]
-			CHAS_rocker_axis_l :  CylindricalBoundary : p1=[          0.000000000,          0.293648172,          0.598946192 ]; p2=[          0.000000000,          0.293648172,          0.598946192 ]; radius=0.001000000
-			CHAS_rocker_pivot_l :  CylindricalBoundary : p1=[          0.003836555,          0.293648172,          0.598946192 ]; p2=[          0.003836555,          0.293648172,          0.598946192 ]; radius=0.001000000
-			TIE_l :  CylindricalBoundary : p1=[          0.069111000,          0.212409000,          0.182526980 ]; p2=[          0.069111000,          0.212409000,          0.182526980 ]; radius=0.034950000
-		}
-
-	}
-        Evaluation functions: 
-	{
-		Roll : {
-			front.side_view_swing_arm_angle_l | weight: 5729.577951308
-			front.roll_center.y | weight: 1000.000000000
-			front.camber_angle_gain_roll_l | weight: 100.000000000
-		 }
-
-		Steering : {
-			front.ackerman_angle | weight: 2291.831180523
-			front.tie_rod_angle_top_view_l | weight: 57.295779513
-			front.tie_rod_angle_front_view_l | weight: 1145.915590262
-		 }
-
-		2in Heave : {
-			front.rocker_coil_over_angle_l | weight: 11459.155902616
-			front.rocker_p_rod_angle_l | weight: 11459.155902616
-			front.coil_over_length_l | weight: 50000.000000000
-			front.p_rod_length_l | weight: 100.000000000
-			front.tie_rod_angle_top_view_l | weight: 57.295779513
-			front.toe_angle_l | weight: 2864.788975654
-			front.side_view_swing_arm_angle_l | weight: 5729.577951308
-			front.roll_center_gnd.z | weight: 50000.000000000
-			front.motion_ratio_heave_l | weight: 250.000000000
-		 }
-	}
-	<< End configuration >> 
-
-
-[ 2023-09-17 15:37:49 ] Creating individual zero... Done.
-[ 2023-09-17 15:37:49 ] Evaluating individual zero...Done.
-[ 2023-09-17 15:37:49 ] Individual zero overall fitness: 227.939108898.
-[ 2023-09-17 15:37:49 ]   Generation |     Elapsed time |      Best individual |         Best fitness |      Average fitness |    Fitness std. dev. |   Selection pressure | 
-[ 2023-09-17 15:40:06 ]            0 |          0: 2:17 |             1F77A110 |        227.939108898 |           2.8099e+03 |           2.3527e+03 |           8.1119e-02 | 
-[ 2023-09-17 15:40:06 ] Starting generation 1 of 1000...[ 2023-09-17 15:40:09 ]            1 |          0: 2:19 |             1F77A110 |           2.2794e+02 |           2.8634e+03 |           8.7098e+03 |           7.9605e-02 | 
-[ 2023-09-17 15:40:09 ] Starting generation 2 of 1000...[ 2023-09-17 15:40:11 ]            2 |          0: 2:22 |             1F77A110 |           2.2794e+02 |           2.3686e+03 |           9.1391e+02 |           9.6235e-02 | 
-[ 2023-09-17 15:40:11 ] Starting generation 3 of 1000...[ 2023-09-17 15:40:15 ]            3 |          0: 2:26 |             1F77A110 |           2.2794e+02 |           2.3087e+03 |           8.0815e+02 |           9.8731e-02 | 
-[ 2023-09-17 15:40:15 ] Starting generation 4 of 1000...[ 2023-09-17 15:40:20 ]            4 |          0: 2:31 |             1F77A110 |           2.2794e+02 |           2.3172e+03 |           9.7189e+02 |           9.8369e-02 | 
-[ 2023-09-17 15:40:20 ] Starting generation 5 of 1000...[ 2023-09-17 15:40:24 ]            5 |          0: 2:34 |             1F77A110 |           2.2794e+02 |           2.2355e+03 |           7.2319e+02 |           1.0196e-01 | 
-[ 2023-09-17 15:40:24 ] Starting generation 6 of 1000...[ 2023-09-17 15:40:27 ]            6 |          0: 2:37 |             1F77A110 |           2.2794e+02 |           2.2140e+03 |           7.3836e+02 |           1.0295e-01 | 
-[ 2023-09-17 15:40:27 ] Starting generation 7 of 1000...[ 2023-09-17 15:40:29 ]            7 |          0: 2:40 |             1F77A110 |           2.2794e+02 |           2.2544e+03 |           1.0749e+03 |           1.0111e-01 | 
-[ 2023-09-17 15:40:29 ] Starting generation 8 of 1000...[ 2023-09-17 15:40:33 ]            8 |          0: 2:44 |             1F77A110 |           2.2794e+02 |           2.1512e+03 |           6.3738e+02 |           1.0596e-01 | 
-[ 2023-09-17 15:40:33 ] Starting generation 9 of 1000...[ 2023-09-17 15:40:37 ]            9 |          0: 2:48 |             1F77A110 |           2.2794e+02 |           2.1996e+03 |           1.0403e+03 |           1.0363e-01 | 
-[ 2023-09-17 15:40:37 ] Starting generation 10 of 1000...[ 2023-09-17 15:40:39 ] Aborting optimization process...
-Optimization aborted. Quitting.
