@@ -140,6 +140,9 @@ namespace ExportToSolidWorks
             // ── 5. Add the STEP component to the assembly ───────────────
             // Per docs: AddComponent5(CompName, ConfigOption, NewConfigName,
             //   UseConfigForPartReferences, ExistingConfigName, X, Y, Z)
+            
+            // Debug: Try different path variations
+            Console.WriteLine($"Trying AddComponent5 with path: {stepSwPath}");
             Component2 comp = (Component2)asm.AddComponent5(
                 stepSwPath,
                 (int)swAddComponentConfigOptions_e.swAddComponentConfigOptions_CurrentSelectedConfig,
@@ -150,7 +153,40 @@ namespace ExportToSolidWorks
             );
 
             if (comp == null)
-                throw new Exception("AddComponent5 returned null — component was not added.");
+            {
+                Console.WriteLine($"Failed with path: {stepSwPath}");
+                // Try with title instead
+                Console.WriteLine($"Trying AddComponent5 with title: {stepTitle}");
+                comp = (Component2)asm.AddComponent5(
+                    stepTitle,
+                    (int)swAddComponentConfigOptions_e.swAddComponentConfigOptions_CurrentSelectedConfig,
+                    "",
+                    false,
+                    "",
+                    0, 0, 0
+                );
+                
+                if (comp == null)
+                {
+                    Console.WriteLine($"Failed with title: {stepTitle}");
+                    // Try with original path
+                    Console.WriteLine($"Trying AddComponent5 with original path: {stepPath}");
+                    comp = (Component2)asm.AddComponent5(
+                        stepPath,
+                        (int)swAddComponentConfigOptions_e.swAddComponentConfigOptions_CurrentSelectedConfig,
+                        "",
+                        false,
+                        "",
+                        0, 0, 0
+                    );
+                    
+                    if (comp == null)
+                        throw new Exception($"AddComponent5 returned null for all variations:\n" +
+                                          $"  - stepSwPath: {stepSwPath}\n" +
+                                          $"  - stepTitle: {stepTitle}\n" +
+                                          $"  - stepPath: {stepPath}");
+                }
+            }
 
             string compName = comp.Name2;
             Console.WriteLine($"Component added: {compName}");

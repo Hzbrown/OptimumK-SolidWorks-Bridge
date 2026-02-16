@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExportToSolidWorks")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+73cd5cf3e45b2765da348a00f77b3bb35c6af4ce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b84c3de6fc803c6caa71d7a32758e1f56db84c5")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExportToSolidWorks")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExportToSolidWorks")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
