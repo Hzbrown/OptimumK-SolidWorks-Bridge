@@ -256,8 +256,8 @@ if __name__ == "__main__":
     car = assembly.draw(assembly.setup)
 
     # Save as STEP file
-    car.save("Car_Assembly.step")
-    print("Saved car assembly as Car_Assembly.step")
+    car.save("Kinematic_Skeleton.step")
+    print("Saved car assembly as Kinematic_Skeleton.step")
 
     # Show in ocp_vscode viewer if available
     try:
