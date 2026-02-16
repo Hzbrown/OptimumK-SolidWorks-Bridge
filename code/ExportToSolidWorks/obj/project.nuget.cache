@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "q0+fRVyOuus=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\harri\\OneDrive\\Desktop\\OptimumK SolidWorks Bridge\\code\\ExportToSolidWorks\\ExportToSolidWorks.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\harri\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "C:\\Users\\harri\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net48\\1.0.3\\microsoft.netframework.referenceassemblies.net48.1.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
