@@ -8,17 +8,9 @@ namespace sw_drawer
     public static class InsertCoordinate
     {
         /// <summary>
-        /// Inserts or replaces a coordinate system in the active SolidWorks document.
+        /// Inserts or updates a coordinate system in the active SolidWorks document.
+        /// Uses ModifyDefinition to preserve feature ID when updating.
         /// </summary>
-        /// <param name="swApp">Active SolidWorks application</param>
-        /// <param name="name">Name of the coordinate system feature</param>
-        /// <param name="x">X position in mm</param>
-        /// <param name="y">Y position in mm</param>
-        /// <param name="z">Z position in mm</param>
-        /// <param name="angleX">Optional: rotation around X axis in degrees (default 0)</param>
-        /// <param name="angleY">Optional: rotation around Y axis in degrees (default 0)</param>
-        /// <param name="angleZ">Optional: rotation around Z axis in degrees (default 0)</param>
-        /// <returns>True if successful</returns>
         public static bool InsertCoordinateSystem(
             SldWorks swApp,
             string name,
@@ -34,7 +26,15 @@ namespace sw_drawer
 
             bool useRotation = (angleX != 0 || angleY != 0 || angleZ != 0);
 
-            // Use SelectByID2 with "COORDSYS" to check if feature exists (from VBA recording)
+            // Convert mm -> meters, degrees -> radians
+            double deltaX = x / 1000.0;
+            double deltaY = y / 1000.0;
+            double deltaZ = z / 1000.0;
+            double radX = angleX * Math.PI / 180.0;
+            double radY = angleY * Math.PI / 180.0;
+            double radZ = angleZ * Math.PI / 180.0;
+
+            // Check if coordinate system exists
             bool exists = swDoc.Extension.SelectByID2(
                 name, "COORDSYS",
                 0, 0, 0,
@@ -44,37 +44,80 @@ namespace sw_drawer
 
             if (exists)
             {
-                Console.WriteLine($"Coordinate system '{name}' exists, replacing...");
-                swDoc.EditDelete();
+                // Get selected feature and modify it in place
+                SelectionMgr selMgr = (SelectionMgr)swDoc.SelectionManager;
+                Feature coordFeat = (Feature)selMgr.GetSelectedObject6(1, -1);
+                
+                if (coordFeat != null)
+                {
+                    CoordinateSystemFeatureData coordData = (CoordinateSystemFeatureData)coordFeat.GetDefinition();
+                    
+                    if (coordData != null)
+                    {
+                        bool accessOk = coordData.AccessSelections(swDoc, null);
+                        
+                        if (accessOk)
+                        {
+                            // Clear entity reference to allow numerical positioning
+                            coordData.OriginEntity = null;
+                            
+                            // Apply the changes
+                            bool modified = coordFeat.ModifyDefinition(coordData, swDoc, null);
+                            coordData.ReleaseSelectionAccess();
+                            
+                            if (modified)
+                            {
+                                swDoc.ClearSelection2(true);
+                                swDoc.EditRebuild3();
+                                
+                                Console.WriteLine(useRotation
+                                    ? $"Updated: '{name}' at ({x}, {y}, {z}) mm, angles ({angleX}, {angleY}, {angleZ}) deg."
+                                    : $"Updated: '{name}' at ({x}, {y}, {z}) mm.");
+                                return true;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"ModifyDefinition failed for '{name}'.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine($"AccessSelections failed for '{name}'.");
+                        }
+                    }
+                }
+                
+                swDoc.ClearSelection2(true);
+                return false;
             }
 
             swDoc.ClearSelection2(true);
 
-            // Convert mm -> meters, degrees -> radians
-            Feature coordFeat = swDoc.FeatureManager
+            // Create new coordinate system using numerical values
+            Feature newFeat = swDoc.FeatureManager
                 .CreateCoordinateSystemUsingNumericalValues(
-                    true,                   // UseLocation
-                    x / 1000,               // DeltaX (meters)
-                    y / 1000,               // DeltaY (meters)
-                    z / 1000,               // DeltaZ (meters)
-                    useRotation,            // UseRotation
-                    angleX * Math.PI / 180, // AngleX (radians)
-                    angleY * Math.PI / 180, // AngleY (radians)
-                    angleZ * Math.PI / 180  // AngleZ (radians)
+                    true,           // UseLocation
+                    deltaX,         // DeltaX (meters)
+                    deltaY,         // DeltaY (meters)
+                    deltaZ,         // DeltaZ (meters)
+                    useRotation,    // UseRotation
+                    radX,           // AngleX (radians)
+                    radY,           // AngleY (radians)
+                    radZ            // AngleZ (radians)
                 ) as Feature;
 
-            if (coordFeat == null)
+            if (newFeat == null)
             {
                 Console.WriteLine($"Failed to create coordinate system '{name}'.");
                 return false;
             }
 
-            coordFeat.Name = name;
+            newFeat.Name = name;
             swDoc.EditRebuild3();
 
             Console.WriteLine(useRotation
-                ? $"Coordinate system '{name}' created at ({x}, {y}, {z}) mm, angles ({angleX}, {angleY}, {angleZ}) deg."
-                : $"Coordinate system '{name}' created at ({x}, {y}, {z}) mm.");
+                ? $"Created: '{name}' at ({x}, {y}, {z}) mm, angles ({angleX}, {angleY}, {angleZ}) deg."
+                : $"Created: '{name}' at ({x}, {y}, {z}) mm.");
 
             return true;
         }

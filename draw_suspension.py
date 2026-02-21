@@ -57,7 +57,7 @@ def InsertWheel(wheels_data: dict, reference_distance: float, is_rear: bool):
         toe = float(wheels_data["Static Toe"]["left"])
         
         x_base = float(reference_distance) + longitudinal_offset
-        y_base = half_track + lateral_offset  # Half Track is already the Y distance from center
+        y_base = half_track + lateral_offset 
         z = tire_diameter / 2.0 + vertical_offset
         
         prefix = "R" if is_rear else "F"
