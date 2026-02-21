@@ -32,9 +32,9 @@ namespace ExportToSolidWorks
             // ── Parse arguments ─────────────────────────────────────────
             if (args.Length < 1)
             {
-                Console.WriteLine("Usage: ExportToSolidWorks.exe <step_file_path>");
+                Console.WriteLine("Usage: ExportToSolidWorks.exe <step_file_path> [output_sldasm_path]");
                 Console.WriteLine("  Inserts a STEP file into a new assembly, mates to origin,");
-                Console.WriteLine("  and saves as Kinematic_Skeleton.SLDASM in the same folder.");
+                Console.WriteLine("  and saves as Kinematic_Skeleton[_{suffix}].SLDASM in the same folder or as specified.");
                 return 1;
             }
 
@@ -45,8 +45,11 @@ namespace ExportToSolidWorks
                 return 1;
             }
 
-            string outDir  = Path.GetDirectoryName(stepPath);
-            string outPath = Path.Combine(outDir, "Kinematic_Skeleton.SLDASM");
+            string outPath;
+            if (args.Length > 1 && !string.IsNullOrWhiteSpace(args[1]))
+                outPath = Path.GetFullPath(args[1]);
+            else
+                outPath = Path.Combine(Path.GetDirectoryName(stepPath), "Kinematic_Skeleton.SLDASM");
 
             Console.WriteLine($"STEP file : {stepPath}");
             Console.WriteLine($"Output    : {outPath}");
