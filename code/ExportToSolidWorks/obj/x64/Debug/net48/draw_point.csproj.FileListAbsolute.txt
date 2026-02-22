@@ -1,0 +1,14 @@
+c:\Users\harri\OneDrive\Desktop\OptimumK SolidWorks Bridge\code\ExportToSolidWorks\obj\x64\Debug\net48\draw_point.csproj.AssemblyReference.cache
+c:\Users\harri\OneDrive\Desktop\OptimumK SolidWorks Bridge\code\ExportToSolidWorks\obj\x64\Debug\net48\draw_point.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\harri\OneDrive\Desktop\OptimumK SolidWorks Bridge\code\ExportToSolidWorks\obj\x64\Debug\net48\draw_point.AssemblyInfoInputs.cache
+c:\Users\harri\OneDrive\Desktop\OptimumK SolidWorks Bridge\code\ExportToSolidWorks\obj\x64\Debug\net48\draw_point.AssemblyInfo.cs
+c:\Users\harri\OneDrive\Desktop\OptimumK SolidWorks Bridge\code\ExportToSolidWorks\obj\x64\Debug\net48\draw_point.csproj.CoreCompileInputs.cache
+c:\Users\harri\OneDrive\Desktop\OptimumK SolidWorks Bridge\code\ExportToSolidWorks\obj\x64\Debug\net48\draw_point.sourcelink.json
+c:\Users\harri\OneDrive\Desktop\OptimumK SolidWorks Bridge\code\ExportToSolidWorks\obj\x64\Debug\net48\ExportToSolidWorks.exe
+c:\Users\harri\OneDrive\Desktop\OptimumK SolidWorks Bridge\code\ExportToSolidWorks\obj\x64\Debug\net48\ExportToSolidWorks.pdb
+c:\Users\harri\OneDrive\Desktop\OptimumK SolidWorks Bridge\code\ExportToSolidWorks\bin\x64\Debug\net48\ExportToSolidWorks.exe.config
+c:\Users\harri\OneDrive\Desktop\OptimumK SolidWorks Bridge\code\ExportToSolidWorks\bin\x64\Debug\net48\ExportToSolidWorks.exe
+c:\Users\harri\OneDrive\Desktop\OptimumK SolidWorks Bridge\code\ExportToSolidWorks\bin\x64\Debug\net48\ExportToSolidWorks.pdb
+c:\Users\harri\OneDrive\Desktop\OptimumK SolidWorks Bridge\code\ExportToSolidWorks\bin\x64\Debug\net48\SolidWorks.Interop.sldworks.dll
+c:\Users\harri\OneDrive\Desktop\OptimumK SolidWorks Bridge\code\ExportToSolidWorks\bin\x64\Debug\net48\SolidWorks.Interop.swconst.dll
+c:\Users\harri\OneDrive\Desktop\OptimumK SolidWorks Bridge\code\ExportToSolidWorks\obj\x64\Debug\net48\draw_point.csproj.Up2Date
